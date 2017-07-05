@@ -14,6 +14,7 @@ var todoFunctions = {
 
     return incrementCounter;
   })(),
+
   addTodo: function(todos, newTodo) {
     // should leave the input argument todos unchanged
     // returns a new array, it should contain todos with the newTodo added to the end.

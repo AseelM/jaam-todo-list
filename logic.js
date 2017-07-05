@@ -19,7 +19,8 @@ var todoFunctions = {
     // should leave the input argument todos unchanged
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
-    return todos.concat(newTodo);
+    newTodo.id = todoFunctions.generateId();
+    return todos.concat([newTodo]);
 
     // hint: array.concat
   },
@@ -41,3 +42,7 @@ var todoFunctions = {
     // hint: array.slice, array.sort
   },
 };
+
+if (typeof module !== 'undefined') {
+  module.exports = todoFunctions;
+}

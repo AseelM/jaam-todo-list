@@ -1,0 +1,26 @@
+{
+  "name": "jaam-todo-list",
+  "version": "1.0.0",
+  "description": "Jaam to-do list project",
+  "main": "dom.js",
+  "scripts": {
+    "test": "node test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAC-11/jaam-todo-list.git"
+  },
+  "keywords": [
+    "TDD"
+  ],
+  "author": "J, A, A, M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAC-11/jaam-todo-list/issues"
+  },
+  "homepage": "https://github.com/FAC-11/jaam-todo-list#readme",
+  "devDependencies": {
+    "tap": "^10.7.0",
+    "tape": "^4.7.0"
+  }
+}

@@ -1,4 +1,3 @@
-
 // part 2 linking it all together
 // The function here is called an iife,
 // it keeps everything inside hidden from the rest of our application
@@ -15,7 +14,7 @@
   ]; // this is our initial todoList
 
   // This function takes a todo, it returns the DOM node representing that todo
-  var createTodoNode = function( todo ) {
+  var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
     // you will need to use addEventListener
 
@@ -34,13 +33,20 @@
     todoNode.appendChild(deleteButtonNode);
 
     // add markTodo button
+    // old code
     // var markButtonNode = document.createElement('button');
     // deleteButtonNode.textContent = "Done?";
     // deleteButtonNode.addEventListener('click', function(event) {
     //   var newState = todoFunctions.markTodo(state, todo.id);
     //   update(newState);
-
     // add classes for css
+
+    var markButtonNode = document.createElement('input');
+    markButtonNode.type = "checkbox";
+    todoNode.append(markButtonNode);
+    markButtonNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+    })
 
     return todoNode;
   };
@@ -59,8 +65,8 @@
         done: false
       }
 
-       // event.target ....
-       console.log(toDoName);
+      // event.target ....
+      console.log(toDoName);
       // hint: todoFunctions.addTodo
       var newState = todoFunctions.addTodo(state, newTodoItem);
       update(newState);
@@ -80,7 +86,7 @@
 
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
-  });
+    });
 
     // you may want to add a class for css
     container.replaceChild(todoListNode, container.firstChild);

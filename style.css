@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Gloria+Hallelujah');
+
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -5,10 +7,10 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
-  background-color: rgb(244, 177, 239);
+  font-family: 'Comfortaa', sans-serif;
+  background-color: #202020;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2vw;
 }
 
 ul {
@@ -39,40 +41,76 @@ form {
   width: 80%;
 }
 
-input[type="text"] {
-  display: block;
-  margin: 5% auto;
-  width: 10rem;
-  height: 6rem;
-  font-size: 4rem;
+input[type="message"] {
+  display: inline-block;
+  margin: 0 auto;
+  height: 8vw;
+  font-size: 5vw;
   appearance: none;
-  box-shadow: none;
-  border-radius: 5px;
+  border-radius: 100px;
+  padding-left: 3vw;
 }
 
-input[type="text"]:focus {
+input[type="message"]:focus {
   border: 2px solid grey:;
 }
 
 input[type="submit"] {
   display: block;
-  margin: 5% auto;
-  width: 7rem;
-  height: 3rem;
-  font-size: 18px;
+  margin: 2vw auto;
+  width: 11vw;
+  height: 5vw;
+  font-size: 2.5vw;
+  font-family: Comfortaa;
   background-color: rgb(242, 203, 239);
   border-radius: 5px;
 }
 
 button {
-  background-color: rgb(228, 24, 91);
+  background-color: #FF4E50;
   border: none;
   color: white;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 2vw;
   border-radius: 7%;
+  margin-right: 2vw;
+  padding: 1vw 1vw;
 
+}
+
+h1 {
+  color: #FC913A;
+  font-family: Comfortaa, sans-serif;
+  font-size: 10vw;
+  margin: 2vw auto 0;
+}
+
+h2 {
+  color: #FC913A;
+  font-family: Comfortaa, sans-serif;
+  font-size: 2.5vw;
+  margin: 2vw auto;
+}
+
+li {
+  background-color: #E1F5C4;
+  transition: 4s;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+li input {
+  /*display: inline-block;*/
+  /*position: relative;*/
+  margin-left: 2vw;
+  /*-webkit-appearance:none;*/
+  width:3vw;
+  height:3vw;
+  background:#F9D423;
+  border-radius:5px;
+  border:2px solid #555;
 }

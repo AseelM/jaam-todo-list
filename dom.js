@@ -4,7 +4,7 @@
 // it keeps everything inside hidden from the rest of our application
 (function() {
   // This is the dom no
-  de where we will keep our todo
+  //de where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
 
@@ -22,7 +22,7 @@
     // add span holding description
     var span = document.createElement('span');
     span.classList.add("list__description");
-    span.innerText = todo.description;
+    span.textContent = todo.description;
     todoNode.appendChild(span);
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
@@ -79,8 +79,8 @@
     var todoListNode = document.createElement('ul');
 
     state.forEach(function(todo) {
-      todoListNode.appendChild(createTodoNode(state[0]));
-    });
+      todoListNode.appendChild(createTodoNode(todo));
+  });
 
     // you may want to add a class for css
     container.replaceChild(todoListNode, container.firstChild);

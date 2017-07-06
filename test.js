@@ -53,18 +53,11 @@ var newArray = [{
     done: false,
   },
   {
+    id: 2,
     description: 'sprinkle coriander',
     done: true,
   }
 ]
-
-var newArrayIncludes = function() {
-  var present = true;
-  for (var i = 0; i < todoArray.length && present; i++) {
-    present = newArray.includes(todoArray[i]);
-  }
-  return present;
-}
 
 // run addTodo function for singleTodo which has no id to check if the function is working
 test('addTodo function gives an id to the newTodo', function(t) {
@@ -74,14 +67,21 @@ test('addTodo function gives an id to the newTodo', function(t) {
   t.end();
 });
 
-// run addTodo function to check the input argument todos are unchanged
-test('input arguments are unchanged', function(t) {
-  var expected = [];
-  logic.addTodo([], singleTodo);
-  t.deepEqual([], expected, 'input arguments should not change');
+// run addTodo function to see that newTodo is added to the end of todos
+test('newTodo is added to end of todos', function(t) {
+  var actual = logic.addTodo(todoArray, singleTodo);
+  var expected = newArray;
+  t.deepEqual(actual, expected, 'newTodo should be added to end of todos in new array');
   t.end();
 })
 
+// run addTodo function to check the input argument todos are unchanged
+test('input arguments are unchanged', function(t) {
+  var expected = [];
+  logic.addTodo(expected, singleTodo);
+  t.deepEqual([], expected, 'input arguments should not change');
+  t.end();
+})
 
 // run addTodo function to return a new array
 test('addTodo returns a new array', function(t) {
@@ -90,47 +90,3 @@ test('addTodo returns a new array', function(t) {
   t.equal(actual, expected, 'addTodo should return a new array');
   t.end();
 })
-
-// run addTodo function to see that newTodo is added to the end of todos
-test('newTodo is added to end of todos', function(t) {
-  var actual = logic.addTodo([], singleTodo);
-  var expected = [singleTodo];
-  t.deepEqual(actual, expected, 'newTodo should be added to end of todos in new array');
-  t.end();
-})
-
-// test('new array contains existing todos', function(t) {
-//   var actual = logic.newArrayIncludes();
-//   var expected = true;
-//   t.deepEqual(actual, expected, 'new array should contain existing todos');
-//   t.end();
-// })
-
-/* Old variables and tests
-
-var newArr = [2, 7, 4, 5, 9];
-var newTodo = [9];
-
-test('addTodo returns a new array', function(t) {
-  var actual = newArr.length !== todos.length;
-  var expected = true;
-  t.deepEqual(actual, expected, 'addTodo should return a new array!');
-  t.end();
-});
-
-test('newArr should contain todos', function(t) {
-  var actual = newArrIncludes();
-  var expected = true;
-  t.equal(actual, expected, 'newArr should contain todo!');
-  t.end();
-});
-
-test('newTodo added to the end of newArr', function(t) {
-  var actual = logic.addTodo(todos, newTodo); // var actual = (newArr.length > todos.length && newArr[newArr.length - 1] !== todos[todos.length - 1] && newArr[newArr.length - 1] === newTodo[newTodo.length - 1]);
-  var expected = [4, 5, 9];
-  // var expected = true;
-  t.deepEqual(actual, expected, 'newTodo needs to finish newArr!');
-  t.end();
-});
-
-*/

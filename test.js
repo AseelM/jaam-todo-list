@@ -35,6 +35,30 @@ var newArray = [{
   }
 ]
 
+var unmarkedTodo = [{
+    id: 0,
+    description: 'add chilli',
+    done: false,
+  },
+  {
+    id: 1,
+    description: 'onion',
+    done: true,
+  }
+]
+
+var markedTodo = [{
+    id: 0,
+    description: 'add chilli',
+    done: true,
+  },
+  {
+    id: 1,
+    description: 'onion',
+    done: true,
+  }
+]
+
 // general working tests
 
 test('Tape runs okay', function(t) {
@@ -58,8 +82,6 @@ test('Todos array contains only objects', function(t) {
 
 
 // addTodo tests
-
-
 
 // run addTodo function for singleTodo which has no id to check if the function is working
 test('addTodo function gives an id to the newTodo', function(t) {
@@ -96,17 +118,65 @@ test('addTodo returns a new array', function(t) {
 // deleteTodo tests
 
 test('deleteTodo should remove object at index "iDToDelete" from array "todos"', function(t) {
-  var actual = logic.deleteTodo([{0: 0},{1: 1}], 0);
-  var expected = [{1: 1}];
+  
+  var actual = logic.deleteTodo([{id: 0},{id: 1},{id: 2},{id: 3}], 3);
+  var expected = [{id: 0},{id: 1},{id: 2}];
+
   t.deepEqual(actual, expected, 'deleteTodo should remove object at index "iDToDelete" from array "todos"');
   t.end();
 });
 
 test('Todos is left unchanged by the function', function(t) {
-  var originalTodos = [{0: 0},{1: 1}];
+  var originalTodos = [{
+    0: 0
+  }, {
+    1: 1
+  }];
   var actual = logic.deleteTodo(originalTodos, 0);
-  var expected = [{0: 0},{1: 1}];
+  var expected = [{
+    0: 0
+  }, {
+    1: 1
+  }];
   t.deepEqual(originalTodos, expected, 'Todos should be left unchangd by the function');
   t.end();
 });
 
+// markTodo tests
+
+// run markTodo function to toggle done value from true or false
+test('markTodo toggles done value', function(t) {
+  var actual = logic.markTodo(unmarkedTodo, 0);
+  var expected = markedTodo;
+  t.deepEqual(actual, expected, 'markTodo should toggle done value');
+  t.end();
+})
+
+// markTodo function should leave all elements but the marked one unchanged
+test('Todos is left unchanged by the function', function(t) {
+  var markedO = [{
+      id: 0,
+      description: 'add chilli',
+      done: false,
+    },
+    {
+      id: 1,
+      description: 'onion',
+      done: true,
+    }
+  ]
+  var actual = logic.markTodo(markedO, 0);
+  var expected = [{
+      id: 0,
+      description: 'add chilli',
+      done: false,
+    },
+    {
+      id: 1,
+      description: 'onion',
+      done: true,
+    }
+  ]
+  t.deepEqual(markedO, expected, 'Todos should be left unchangd by the function');
+  t.end();
+});

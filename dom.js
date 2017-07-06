@@ -44,10 +44,13 @@
     var markButtonNode = document.createElement('input');
     markButtonNode.type = "checkbox";
     todoNode.append(markButtonNode);
+    markButtonNode.checked = todo.done;
     markButtonNode.addEventListener('click', function(event) {
+      event.preventDefault();
       var newState = todoFunctions.markTodo(state, todo.id);
-    })
-
+          update(newState);
+      console.log(newState);
+    });
     return todoNode;
   };
 

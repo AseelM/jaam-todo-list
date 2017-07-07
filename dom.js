@@ -6,13 +6,7 @@
   //de where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-  var colors = ["#EEE1F2", "#695ABC", "#D6840A", "#4C4037", "#FFF4FE"];
-  var colorCounter = 0;
-  var state = [
-    // { id: -3, description: 'first todo' },
-    // { id: -2, description: 'second todo' },
-    // { id: -1, description: 'third todo' },
-  ]; // this is our initial todoList
+  var state = [ ];
 
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
@@ -32,7 +26,6 @@
 
       var newState = todoFunctions.markTodo(state, todo.id);
           update(newState);
-      console.log(newState);
     });
     // add span holding description
     var span = document.createElement('span');
@@ -74,11 +67,9 @@
       }
 
       // event.target ....
-      console.log(toDoName);
-      // hint: todoFunctions.addTodo
+
       var newState = todoFunctions.addTodo(state, newTodoItem);
       update(newState);
-      console.log(newState);
       colorCounter++;
       var audio = new Audio('./sounds/ding.wav');
       audio.play();

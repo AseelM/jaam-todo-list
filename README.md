@@ -10,7 +10,7 @@ We decided to spend the first hour dividing up the work, and trying to understan
 
 We also wrote some initial code, like **HTML** and **CSS templates**, so that we all had a solid base to work from before splitting off to our seperate feature branches in pairs. We made a few initial tests in our _test.js_ file - one testing that the **Tape** testing framework was functioning as it should, and one checking that the argument we were passing in `todos` was an array of objects as it should be. At this point we split off into pairs.
 
-## (il)logical.js
+## `(il)logical.js`
 The experience we had with TDD felt pretty frustrating and counter-intuitive at first. The initial `logic.js` file seemed fairly simple to write when we first looked at it. What was most challenging was trying to write the tests for **every granular aspect** of our functions. It felt pedantic and tedious checking for things like 
 > Does one *really* equal one??
 

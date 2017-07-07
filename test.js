@@ -93,22 +93,8 @@ test('addTodo returns a new array', function(t) {
 
 test('deleteTodo should remove object at index "iDToDelete" from array "todos"', function(t) {
 
-  var actual = logic.deleteTodo([{
-    id: 0
-  }, {
-    id: 1
-  }, {
-    id: 2
-  }, {
-    id: 3
-  }], 3);
-  var expected = [{
-    id: 0
-  }, {
-    id: 1
-  }, {
-    id: 2
-  }];
+  var actual = logic.deleteTodo([{id: 0},{id: 1},{id: 2},{id: 3}], 3);
+  var expected = [{id: 0},{id: 1},{id: 2}];
 
   t.deepEqual(actual, expected, 'deleteTodo should remove object at index "iDToDelete" from array "todos"');
   t.end();

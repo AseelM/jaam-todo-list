@@ -54,6 +54,8 @@
     deleteButtonNode.textContent = "Delete";
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
+      var audio = new Audio('./sounds/trash.wav');
+      audio.play();
       update(newState);
     });
     todoNode.appendChild(deleteButtonNode);
@@ -78,6 +80,8 @@
       update(newState);
       console.log(newState);
       colorCounter++;
+      var audio = new Audio('./sounds/ding.wav');
+      audio.play();
     });
   }
 

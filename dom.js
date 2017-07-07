@@ -29,7 +29,7 @@
       todoNode.style.backgroundColor = "#FC913A";
     }
     markButtonNode.addEventListener('click', function(event) {
-      event.preventDefault();
+
       var newState = todoFunctions.markTodo(state, todo.id);
           update(newState);
       console.log(newState);

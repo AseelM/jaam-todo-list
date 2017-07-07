@@ -61,7 +61,7 @@ var todoFunctions = {
   //   // hint: array.slice, array.sort
   // },
 }
-/*Istabul ignore next*/
+/* istanbul ignore next */
 if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
 }

@@ -6,7 +6,8 @@
   //de where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-
+  var colors = ["#EEE1F2", "#695ABC", "#D6840A", "#4C4037", "#FFF4FE"];
+  var colorCounter = 0;
   var state = [
     // { id: -3, description: 'first todo' },
     // { id: -2, description: 'second todo' },
@@ -16,13 +17,38 @@
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
-    // you will need to use addEventListener
 
+        // this adds a mark checkbox
+    var markButtonNode = document.createElement('input');
+    markButtonNode.type = "checkbox";
+    todoNode.append(markButtonNode);
+    markButtonNode.checked = todo.done;
+    if (markButtonNode.checked) {
+      todoNode.style.backgroundColor = "#006400";
+    } else {
+      todoNode.style.backgroundColor = "#FC913A";
+    }
+    markButtonNode.addEventListener('click', function(event) {
+      event.preventDefault();
+      var newState = todoFunctions.markTodo(state, todo.id);
+          update(newState);
+      console.log(newState);
+    });
     // add span holding description
     var span = document.createElement('span');
     span.classList.add("list__description");
     span.textContent = todo.description;
+    if (markButtonNode.checked) {
+    span.style.textDecoration = "line-through";
+    span.style.fontStyle = "italic";
+    span.style.color = "white";
+  } else {
+    span.style.textDecoration = "none";
+    span.style.fontStyle = "normal";
+    span.style.color = "black";
+  }
     todoNode.appendChild(span);
+
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.textContent = "Delete";
@@ -31,35 +57,12 @@
       update(newState);
     });
     todoNode.appendChild(deleteButtonNode);
-
-    // add markTodo button
-    // old code
-    // var markButtonNode = document.createElement('button');
-    // deleteButtonNode.textContent = "Done?";
-    // deleteButtonNode.addEventListener('click', function(event) {
-    //   var newState = todoFunctions.markTodo(state, todo.id);
-    //   update(newState);
-    // add classes for css
-
-    var markButtonNode = document.createElement('input');
-    markButtonNode.type = "checkbox";
-    todoNode.append(markButtonNode);
-    markButtonNode.checked = todo.done;
-    markButtonNode.addEventListener('click', function(event) {
-      event.preventDefault();
-      var newState = todoFunctions.markTodo(state, todo.id);
-          update(newState);
-      console.log(newState);
-    });
     return todoNode;
   };
 
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-      // what does event.preventDefault do?
-      // what is inside event.target?
       event.preventDefault();
       var toDoName = document.getElementsByName('description')[0].value;
 
@@ -74,6 +77,7 @@
       var newState = todoFunctions.addTodo(state, newTodoItem);
       update(newState);
       console.log(newState);
+      colorCounter++;
     });
   }
 
@@ -86,7 +90,6 @@
   // you do not need to change this function
   var renderState = function(state) {
     var todoListNode = document.createElement('ul');
-
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
     });
